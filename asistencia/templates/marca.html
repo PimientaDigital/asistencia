@@ -1,0 +1,23 @@
+<html>
+<body style="{margin:0 auto;}">
+<h1>Marcas</h1>
+
+<form action ="" method="POST">  {% csrf_token %} 
+  <table>
+  {% for field in form %}
+  {% for error in field.errors %}
+      <div class="alert alert-error">
+          <strong>{{ error|escape }}</strong>
+      </div>
+   {% endfor %}
+  <tr>
+    <td>{{ field.label }}</td>
+    <td>{{ field }}</td>
+  {% endfor %}
+  </table>
+{% if completed %}
+<p> !Marca registrada¡</p>
+{% endif %}
+</form>
+</body>
+</html>
