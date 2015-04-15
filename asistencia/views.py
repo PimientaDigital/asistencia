@@ -1,14 +1,15 @@
 import datetime
 from django.http import Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from asistencia.models import Marca
 from personal.models import Trabajador
 from asistencia.forms import MarcaForm
 from generico.models import Estado
 from personal.models import Trabajador
-from asistencia.models import Marca
 
 # Create your views here.
+
+TODAY = datetime.date.today()
 
 
 def marcar(request):
@@ -18,12 +19,17 @@ def marcar(request):
         form = MarcaForm(request.POST)
         if form.is_valid():
             completed = True
-            trab = Trabajador.objects.get(id=int(form.cleaned_data['trab']))
+            id_trab = int(form.cleaned_data['trab'])
+            trab = Trabajador.objects.get(id=id_trab)
             fec = datetime.date.today()
-            hin = datetime.datetime.time(datetime.datetime.now())
-            hsa = None
             est = Estado.objects.get(id=1)
-            Marca.objects.get_or_create(tra_mar=trab,fec_mar=fec,hin_mar=hin,hsa_mar=hsa,est_mar=est,)
+            if not Marca.objects.filter(fec_mar=TODAY).exists():
+                hin = datetime.datetime.now()
+                hsa = None
+                Marca.objects.get_or_create(tra_mar=trab, fec_mar=fec, hin_mar=hin, hsa_mar=hsa, est_mar=est,)
+            else:
+                hsa = datetime.datetime.now()
+                Marca.objects.filter(tra_mar=1, fec_mar=TODAY).update(hsa_mar=hsa)
     context = {'form': form, 'completed': completed}
     template = 'marca.html'
     return render(request, template, context)

@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'asistencia',
     'personal',
     'generico',
+    'model_report',
 )
 
 MIDDLEWARE_CLASSES = (
