@@ -8,6 +8,6 @@ from validations import code_validation
 class MarcaForm(forms.Form):
     trab = forms.CharField(
         label=_(u'Código'),
-        max_length=5,
+        max_length=8,
         validators=[code_validation]
         )

@@ -4,6 +4,7 @@ from model_report.utils import (usd_format, avg_column, sum_column, count_column
 
 from models import Marca
 
+
 class ReporteMarcas(ReportAdmin):
     model = Marca
     fields = [

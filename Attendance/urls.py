@@ -8,7 +8,8 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'Attendance.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-                       url(r'^marca/', 'asistencia.views.marcar', name='marcar'),
-                       url(r'', include('model_report.urls')),
                        url(r'^admin/', include(admin.site.urls)),
+                       url(r'^marca/', 'asistencia.views.marcar', name='marcar'),
+                       url(r'', include('model_report.urls'), name='reportes'),
+
 )
