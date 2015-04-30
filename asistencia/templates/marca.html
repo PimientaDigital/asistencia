@@ -1,9 +1,25 @@
 <html>
-<body style="{margin:0 auto;}">
-<h1>Marcas</h1>
+<head>
+<style>
+  #marcar {
+    left: 50%;
+    position: fixed;
+    top: 0;
+    transform: translate(-50%, 18%);
+    font-size: 50px;
+}
+td {
+  font-size: 50px;
+}
 
+</style>
+</head>
+<body style="{margin:0 auto;}">
+
+<div id="marcar" class="sec_marcar">
+<h1>Marcas</h1>
 <form action ="" method="POST">  {% csrf_token %} 
-  <table>
+    <table>
   {% for field in form %}
   {% for error in field.errors %}
       <div class="alert alert-error">
@@ -12,13 +28,21 @@
    {% endfor %}
   <tr>
     <td>{{ field.label }}</td>
-    <td>{{ field }}</td>
+    <td>{{ field}}</td>
   {% endfor %}
   </table>
+  </div>
 {% if completed %}
-<p> !Marca registrada¡</p>
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
 {% endif %}
 
 </form>
+<script type="text/javascript">
+  document.getElementById("id_trab").focus();
+</script>
 </body>
 </html>

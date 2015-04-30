@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'personal',
     'generico',
     'model_report',
+    'daterange_filter',
 )
 
 MIDDLEWARE_CLASSES = (

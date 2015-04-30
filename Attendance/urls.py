@@ -10,6 +10,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^marca/', 'asistencia.views.marcar', name='marcar'),
+                       url(r'^mensaje/', 'asistencia.views.mensaje', name='mensaje'),
                        url(r'', include('model_report.urls'), name='reportes'),
-
 )

@@ -3,6 +3,7 @@
 from django import forms
 from django.utils.translation import ugettext as _
 from validations import code_validation
+from django.forms import ModelForm, CharField, TextInput
 
 
 class MarcaForm(forms.Form):

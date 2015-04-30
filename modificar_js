@@ -1,0 +1,12 @@
+en el archivo: /home/Xairi/Projects/Python/Asistencia/asistencia/lib64/python2.7/site-packages/django/contrib/admin/static/admin/js/admin
+modificar la funcion:
+
+openCalendar: function(num)
+.
+.
+.
+.
+  if (getStyle(document.body,'direction')!='rtl') {
+            cal_box.style.left = findPosX(cal_link) - 180 + 'px';
+        }
+        else {
